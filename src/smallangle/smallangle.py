@@ -5,6 +5,14 @@ import numpy as np
 import pandas as pd
 from numpy import pi
 
+num = click.option(
+    "-n",
+    "--number",
+    default=10,
+    help="Amount of steps between 0 and 2pi.",
+    show_default=True,
+)
+
 
 @click.group()
 def cmd_group():
@@ -13,13 +21,7 @@ def cmd_group():
 
 # make a subcommand sin
 @cmd_group.command()
-@click.option(
-    "-n",
-    "--number",
-    default=10,
-    help="Amount of steps between 0 and 2pi.",
-    show_default=True,
-)
+@num
 def sin(number):
     """Make a list of numbers between 0 and 2pi and of the sin of these numbers.
 
@@ -33,13 +35,7 @@ def sin(number):
 
 # make a subcommand tan
 @cmd_group.command()
-@click.option(
-    "-n",
-    "--number",
-    default=10,
-    help="Amount of steps between 0 and 2pi.",
-    show_default=True,
-)
+@num
 def tan(number):
     """Make a list of numbers between 0 and 2pi and of the tan of these numbers.
 
